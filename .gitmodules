@@ -18,7 +18,7 @@
 	url = git@github.com:kchmck/vim-coffee-script
 [submodule ".vim/bundle/vim-addon-mw-utils"]
 	path = .vim/bundle/vim-addon-mw-utils
-	url = git@github.com:vim-scripts/vim-addon-mw-utils
+	url = git@github.com:MarcWeber/vim-addon-mw-utils
 [submodule ".vim/bundle/vim-endwise"]
 	path = .vim/bundle/vim-endwise
 	url = git@github.com:tpope/vim-endwise
