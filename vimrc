@@ -2,12 +2,10 @@ call pathogen#infect()
 call pathogen#helptags()
 
 syntax on
-set background=dark
+set background=light
 set t_Co=256
 let g:solarized_termtrans=1
 colorscheme solarized
-set guifont=Inconsolata\ 14
-set smartindent
 set autoindent
 set sw=2
 set ts=2
@@ -77,9 +75,6 @@ noremap <S-Tab> :bprevious<CR>
 
 "make command-T ignore a number of unimportant files
 set wildignore+=*.class,.git,.hg,.svn,target/**
-
-"command-T flush shortcut
-noremap <Leader>f :CommandTFlush<CR> 
 
 "nexus files
 autocmd BufRead,BufNewFile *.nex set syntax=nexus|set nowrap
@@ -163,3 +158,35 @@ autocmd FileType ruby setlocal path+=lib/
 
 " instant markdown: slow down
 let g:instant_markdown_slow = 1
+
+" single compile
+nmap <F9> :SCCompile<cr>
+nmap <F10> :SCCompileRun<cr>
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" javascript
+let g:used_javascript_libs = 'underscore,jquery,chai,handlebars'
+
+" whitespace
+function! TrimWhiteSpace()
+  %s/\s\+$//e
+endfunction
+autocmd BufWritePre * :call TrimWhiteSpace()
+
+set backspace=2
+
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\  'ctermfgs': ['blue', 'green', 'red', 'magenta']
+\}
+
+" nohlsearch
+nmap <leader>h :nohlsearch<cr>
+
+" add byebug
+nmap <leader>bb O<C-R> require 'byebug'; byebug<esc>
+
+" vim session shortcuts
+map <leader>w :mksession! ~/.vim_session<cr>
+map <leader>l :source ~/.vim_session <cr>
