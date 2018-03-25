@@ -1,11 +1,7 @@
-###############
-# OH MY FISH
-###############
-# Path to Oh My Fish install.
-set -gx OMF_PATH "/Users/pfrasa/.local/share/omf"
-
-# Load oh-my-fish configuration.
-source $OMF_PATH/init.fish
+### FUNDLE
+if not functions -q fundle; eval (curl -sfL https://git.io/fundle-install); end
+fundle plugin 'edc/bass'
+fundle init
 
 ###############
 # PATH
@@ -15,10 +11,20 @@ source $OMF_PATH/init.fish
 set -e PATH
 
 # reset standard paths
-set -x PATH /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin /Library/TeX/texbin
+set -x PATH /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin
+
+if test -d /Library/TeX/texbin
+  set -x PATH $PATH /Library/TeX/texbin
+end
 
 # user paths
-set -x PATH $HOME/.local/bin $PATH
+if test -d $HOME/.local/bin
+  set -x PATH $HOME/.local/bin $PATH
+end
+
+if test -d $HOME/.rbenv/bin
+  set -x PATH $HOME/.rbenv/bin $PATH
+end
 
 # direnv
 if test -f ".envrc"
@@ -27,8 +33,6 @@ end
 
 ######
 set -x EDITOR /usr/bin/vim
-
-test -s /home/piru/.nvm-fish/nvm.fish; and source /home/piru/.nvm-fish/nvm.fish
 
 # direnv
 eval (direnv hook fish)
@@ -46,7 +50,9 @@ function load_node
   end
 end
 
-load_node
+if test -d ".nvm"
+  load_node
+end
 
 function __check_nvmrc --on-variable PWD --description "load per-project node version"
   load_node
@@ -60,7 +66,6 @@ alias pull='git pull --rebase'
 alias push='git push origin (git rev-parse --abbrev-ref HEAD)'
 alias forcepush='git push -f origin (git rev-parse --abbrev-ref HEAD)'
 
-alias mou="open -a ~/Applications/Mou.app"
 alias fconf='vim ~/.config/fish/config.fish'
 
 #### FUNCTIONS
