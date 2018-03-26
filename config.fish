@@ -22,8 +22,13 @@ if test -d $HOME/.local/bin
   set -x PATH $HOME/.local/bin $PATH
 end
 
-if test -d $HOME/.rbenv/bin
+if test -d $HOME/.rbenv
   set -x PATH $HOME/.rbenv/bin $PATH
+end
+
+if test -d $HOME/.pyenv
+  set -x PATH $HOME/.pyenv/bin $PATH
+  status --is-interactive; and source (pyenv init -|psub)
 end
 
 # direnv
