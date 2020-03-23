@@ -2,6 +2,7 @@ call pathogen#infect()
 call pathogen#helptags()
 
 syntax on
+set encoding=utf-8
 set background=light
 set t_Co=256
 let g:solarized_termtrans=1
