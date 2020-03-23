@@ -3,7 +3,7 @@ local function keyCode(key, modifiers)
    return function()
       hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), true):post()
       hs.timer.usleep(1000)
-      hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), false):post()      
+      hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), false):post()
    end
 end
 
@@ -24,6 +24,13 @@ remapKey('alt', 'ü', keyCode('5', {'alt'}))
 remapKey('alt', '¨', keyCode('6', {'alt'}))
 remapKey('alt', 'ä', keyCode('8', {'alt'}))
 remapKey('alt', '$', keyCode('9', {'alt'}))
+remapKey({}, '§', keyCode('<', {}))
+remapKey({'shift'}, '§', keyCode('<', {'shift'}))
+remapKey({'alt'}, '§', keyCode('7', {'alt', 'shift'}))
+
+hs.hotkey.bind({"cmd", "shift"}, "L", function()
+  hs.caffeinate.lockScreen()
+end)
 
 -- For debug
 local function showKeyPress(tapEvent)
