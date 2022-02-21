@@ -1,11 +1,4 @@
 ########
-# FUNDLE
-########
-if not functions -q fundle; eval (curl -sfL https://git.io/fundle-install); end
-fundle plugin 'edc/bass'
-fundle init
-
-########
 # CONFIG
 ########
 set -x EDITOR /usr/bin/vim
@@ -65,22 +58,11 @@ end
 function load_node
   if test -f ".nvmrc"
     nvm use >/dev/null
-  else
-    nvm use default >/dev/null
   end
 end
 
 function __check_nvmrc --on-variable PWD --description "load per-project node version"
   load_node
-end
-
-## JVM
-function sdk
-  if test -d $HOME/.sdkman
-    bass source ~/.sdkman/bin/sdkman-init.sh --no-use ';' sdk $argv
-  else
-    echo "sdkman not installed"
-  end
 end
 
 #########
@@ -128,11 +110,13 @@ if test -d $HOME/.rbenv
 end
 
 if test -d $HOME/.pyenv
-  status --is-interactive; and . (pyenv init -|psub)
+  pyenv init - | source
 end
 
 if test -d $HOME/.nvm
-  load_node
+  #load_node
 end
 
-sdk list >/dev/null
+if test -d $HOME/.sdkman
+  sdk version >/dev/null
+end

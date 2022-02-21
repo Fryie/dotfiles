@@ -1,6 +1,3 @@
-call pathogen#infect()
-call pathogen#helptags()
-
 syntax on
 set encoding=utf-8
 set background=light
@@ -69,6 +66,7 @@ noremap  $ g$
 
 "map leader key
 let mapleader = "-"
+let maplocalleader = "<"
 
 "cycle through buffers with tab / shift-tab
 noremap <Tab> :bnext<CR>
@@ -76,10 +74,6 @@ noremap <S-Tab> :bprevious<CR>
 
 "make command-T ignore a number of unimportant files
 set wildignore+=*.class,.git,.hg,.svn,target/**
-
-"nexus files
-autocmd BufRead,BufNewFile *.nex set syntax=nexus|set nowrap
-autocmd BufRead,BufNewFile *.nex.* set syntax=nexus|set nowrap
 
 "status line
 set laststatus=2

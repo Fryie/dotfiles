@@ -1,0 +1,4 @@
+ctrlp
+fugitive
+nerdtree
+vim-colors-solarized

@@ -1,9 +1,17 @@
+local shift = hs.keycodes.map.shift
+local alt = hs.keycodes.map.alt
+
 local function keyCode(key, modifiers)
    modifiers = modifiers or {}
    return function()
-      hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), true):post()
-      hs.timer.usleep(1000)
-      hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), false):post()
+      for _, mod in ipairs(modifiers) do
+         hs.eventtap.event.newKeyEvent(mod, true):post()
+      end
+      hs.eventtap.event.newKeyEvent(string.lower(key), true):post()
+      hs.eventtap.event.newKeyEvent(string.lower(key), false):post()
+      for _, mod in ipairs(modifiers) do
+         hs.eventtap.event.newKeyEvent(mod, false):post()
+      end
    end
 end
 
