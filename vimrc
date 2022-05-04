@@ -1,6 +1,6 @@
 syntax on
 set encoding=utf-8
-set background=light
+set background=dark
 set t_Co=256
 let g:solarized_termtrans=1
 colorscheme solarized

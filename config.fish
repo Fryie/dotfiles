@@ -17,6 +17,10 @@ if test -d /Library/TeX/texbin
   set -x PATH $PATH /Library/TeX/texbin
 end
 
+if test -d /snap/bin
+  set -x PATH $PATH /snap/bin
+end
+
 # user paths
 if test -d $HOME/.local/bin
   set -x PATH $HOME/.local/bin $PATH
@@ -74,6 +78,14 @@ alias forcepush='git push -f origin (git rev-parse --abbrev-ref HEAD)'
 alias gamend='git commit --amend'
 
 alias fconf='vim ~/.config/fish/config.fish'
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+alias idris='rlwrap idris2'
+alias iddoc='open (idris2 --libdir)/docs/index.html'
+
+alias ports='sudo lsof -i -P -n | grep LISTEN'
 
 ##################
 # HELPER FUNCTIONS

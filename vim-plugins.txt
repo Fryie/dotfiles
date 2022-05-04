@@ -2,3 +2,4 @@ ctrlp
 fugitive
 nerdtree
 vim-colors-solarized
+idris2-vim
