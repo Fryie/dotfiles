@@ -1,5 +1,7 @@
 ctrlp
-fugitive
+vim-fugitive
 nerdtree
-vim-colors-solarized
+vim-solarized
 idris2-vim
+kotlin-vim
+presenting.vim

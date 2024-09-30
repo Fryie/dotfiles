@@ -26,6 +26,10 @@ if test -d $HOME/.local/bin
   set -x PATH $HOME/.local/bin $PATH
 end
 
+if test -d $HOME/.idris2/bin
+  set -x PATH $HOME/.idris2/bin $PATH
+end
+
 if test -d $HOME/scripts
   set -x PATH $HOME/scripts $PATH
 end
@@ -54,19 +58,19 @@ if test -d $HOME/.cargo
   set -x PATH $HOME/.cargo/bin $PATH
 end
 
-## NODE
-function nvm
-  bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+## HASKELL
+if test -d $HOME/.ghcup
+  set -x PATH $HOME/.ghcup/bin $PATH
 end
 
-function load_node
-  if test -f ".nvmrc"
-    nvm use >/dev/null
-  end
+## JVM
+if test -d $HOME/.sdkman
+  set -x PATH $HOME/.sdkman/candidates/java/current/bin/ $PATH
 end
 
-function __check_nvmrc --on-variable PWD --description "load per-project node version"
-  load_node
+## LEAN
+if test -d $HOME/.elan
+  set -x PATH $HOME/.elan/bin/ $PATH
 end
 
 #########
@@ -123,10 +127,6 @@ end
 
 if test -d $HOME/.pyenv
   pyenv init - | source
-end
-
-if test -d $HOME/.nvm
-  #load_node
 end
 
 if test -d $HOME/.sdkman

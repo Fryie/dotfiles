@@ -185,3 +185,9 @@ nmap <leader>bb O<C-R> require 'byebug'; byebug<esc>
 " vim session shortcuts
 map <leader>w :mksession! ~/.vim_session<cr>
 map <leader>l :source ~/.vim_session <cr>
+
+" code blocks in markdown
+let g:markdown_fenced_languages = ['java', 'kotlin', 'javascript', 'sh']
+
+" presenting
+let g:presenting_figlets=0
